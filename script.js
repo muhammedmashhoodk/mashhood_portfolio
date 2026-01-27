@@ -15,7 +15,7 @@ window.addEventListener('scroll', () => {
 // Mobile Menu Toggle
 mobileMenuBtn.addEventListener('click', () => {
     navLinks.classList.toggle('active');
-    
+
     // Toggle Icon between Bars and Times (X)
     const icon = mobileMenuBtn.querySelector('i');
     if (navLinks.classList.contains('active')) {
@@ -59,3 +59,35 @@ document.querySelectorAll('section').forEach(section => {
     section.style.transition = 'all 0.6s ease-out';
     observer.observe(section);
 });
+
+// Contact Form & Modal Logic
+var submitted = false;
+const modal = document.getElementById('confirmationModal');
+const closeModal = document.querySelector('.close-modal');
+const contactForm = document.getElementById('contactForm');
+
+function openModal() {
+    modal.style.display = 'flex';
+    contactForm.reset();
+    submitted = false; // Reset for next time
+}
+
+// Close Modal functions
+if (closeModal) {
+    closeModal.onclick = function () {
+        modal.style.display = 'none';
+    }
+}
+
+const closeModalBtn = document.getElementById('closeModalBtn');
+if (closeModalBtn) {
+    closeModalBtn.onclick = function() {
+        modal.style.display = 'none';
+    }
+}
+
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
