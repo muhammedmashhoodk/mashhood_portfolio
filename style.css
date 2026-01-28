@@ -300,6 +300,7 @@ nav {
     font-size: 2rem;
     margin-bottom: 1.5rem;
     color: var(--accent-color);
+    align-items: center;
 }
 
 .about-stats {
