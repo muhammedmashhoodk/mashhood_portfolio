@@ -281,10 +281,12 @@ nav {
 
 /* About Section */
 .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+    display: flex;
+    flex-direction: column; /* Stacks the image and text vertically */
+    align-items: center;    /* Centers items horizontally */
+    gap: 2rem;              /* Reduced gap for a single column layout */
+    max-width: 800px;       /* Prevents text from becoming too wide */
+    margin: 0 auto;         /* Centers the entire grid container on the page */
 }
 
 .about-image img {
@@ -296,11 +298,15 @@ nav {
     background-color: var(--card-bg);
 }
 
+.about-text {
+    text-align: center;
+}
+
 .about-text h3 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
     color: var(--accent-color);
-    align-items: center;
+    /* Remove align-items: center; as it doesn't work on headings */
 }
 
 .about-stats {
