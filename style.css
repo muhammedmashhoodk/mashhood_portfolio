@@ -305,19 +305,23 @@ nav {
 
 .about-stats {
     display: flex;
+    justify-content: center;
     gap: 2rem;
     margin-top: 2rem;
+    align-items: center;
 }
 
 .stat-item h4 {
     font-size: 2.5rem;
     color: var(--secondary-accent);
+    text-align: center;
 }
 
 .stat-item p {
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-align: center;
 }
 
 /* Skills Section */
