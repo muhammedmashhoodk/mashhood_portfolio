@@ -115,7 +115,7 @@ if (closeModal) {
 
 const closeModalBtn = document.getElementById('closeModalBtn');
 if (closeModalBtn) {
-    closeModalBtn.onclick = function() {
+    closeModalBtn.onclick = function () {
         modal.style.display = 'none';
     }
 }
@@ -125,3 +125,87 @@ window.onclick = function (event) {
         modal.style.display = 'none';
     }
 }
+
+// Typing Animation
+// Typing Animation
+document.addEventListener('DOMContentLoaded', () => {
+    const textElement = document.querySelector('.typing-text');
+    const cursorElement = document.querySelector('.cursor');
+
+    // Check if elements exist
+    if (!textElement || !cursorElement) return;
+
+    const textToType = textElement.textContent;
+    textElement.textContent = ''; // Clear text initially
+
+    let charIndex = 0;
+    const typingSpeed = 100; // ms per char
+
+    function type() {
+        if (charIndex < textToType.length) {
+            textElement.textContent += textToType.charAt(charIndex);
+
+            charIndex++;
+            setTimeout(type, typingSpeed);
+        } else {
+            // Typing finished
+            cursorElement.style.animation = 'blink 1s infinite';
+        }
+    }
+
+    // Start typing after a short delay
+    setTimeout(type, 1000);
+});
+
+// Project Details Modal Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const projectModal = document.getElementById('projectModal');
+    const closeProjectModal = document.querySelector('.close-project-modal');
+    const closeProjectModalBtn = document.getElementById('closeProjectModalBtn');
+
+    // Modal Elements
+    const modalImg = document.getElementById('modalProjectImage');
+    const modalTitle = document.getElementById('modalProjectTitle');
+    const modalDesc = document.getElementById('modalProjectDesc');
+
+    // Open Modal
+    document.querySelectorAll('.view-project-btn').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const title = this.getAttribute('data-title');
+            const img = this.getAttribute('data-img');
+            const desc = this.getAttribute('data-desc');
+
+            modalTitle.textContent = title;
+            modalImg.src = img;
+            modalDesc.textContent = desc;
+
+            projectModal.style.display = 'flex';
+        });
+    });
+
+    // Close Modal Helper
+    function closeProjectModalFunc() {
+        projectModal.style.display = 'none';
+    }
+
+    // Close Events
+    if (closeProjectModal) {
+        closeProjectModal.addEventListener('click', closeProjectModalFunc);
+    }
+
+    if (closeProjectModalBtn) {
+        closeProjectModalBtn.addEventListener('click', closeProjectModalFunc);
+    }
+
+    // Window Click (Handle both modals)
+    window.onclick = function (event) {
+        const confirmationModal = document.getElementById('confirmationModal');
+        if (event.target == confirmationModal) {
+            confirmationModal.style.display = 'none';
+        }
+        if (event.target == projectModal) {
+            projectModal.style.display = 'none';
+        }
+    }
+});
