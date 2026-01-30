@@ -2,6 +2,8 @@
 const header = document.getElementById('header');
 const mobileMenuBtn = document.getElementById('mobile-menu');
 const navLinks = document.querySelector('.nav-links');
+const themeToggleBtn = document.getElementById('theme-toggle');
+const themeIcon = themeToggleBtn.querySelector('i');
 
 // Sticky Header Effect
 window.addEventListener('scroll', () => {
@@ -37,7 +39,39 @@ document.querySelectorAll('.nav-links li a').forEach(link => {
     });
 });
 
-// Scroll Reveal Animation (Simple version with Intersection Observer)
+// Dark Mode Toggle Logic
+function setTheme(theme) {
+    if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        document.body.classList.remove('dark-mode');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+        localStorage.setItem('theme', 'light');
+    }
+}
+
+// Check Local Storage on Load
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    setTheme('dark');
+}
+
+// Event Listener for Toggle Button
+if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+        if (document.body.classList.contains('dark-mode')) {
+            setTheme('light');
+        } else {
+            setTheme('dark');
+        }
+    });
+}
+
+// ScrollReveal Animation (Simple version with Intersection Observer)
 const observerOptions = {
     threshold: 0.1
 };

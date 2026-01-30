@@ -1,17 +1,40 @@
 /* Global Styles */
 :root {
-    --bg-color: #0d0d12;
-    --card-bg: #16161f;
-    --text-color: #e0e0e0;
-    --heading-color: #ffffff;
-    --accent-color: #6c5ce7;
-    /* Vibrant Purple */
-    --accent-hover: #a29bfe;
-    --secondary-accent: #00cec9;
-    /* Teal/Cyan */
+    --bg-color: #FFFFFF;
+    --card-bg: #FFFFFF;
+    --text-color: #1A1A1A;
+    --heading-color: #000000;
+    --accent-color: #000000;
+    /* Pure Black */
+    --accent-hover: #333333;
+    --secondary-accent: #333333;
+    /* Dark Gray */
+    --border-color: #E0E0E0;
+    --light-gray: #F5F5F5;
     --font-primary: 'Outfit', sans-serif;
     --transition-speed: 0.3s;
     --spacing-section: 5rem;
+    --header-scrolled-bg: rgba(255, 255, 255, 0.95);
+    --btn-text-color: #FFFFFF;
+    --btn-hover-bg: #FFFFFF;
+    --btn-secondary-hover-text: #FFFFFF;
+}
+
+body.dark-mode {
+    --bg-color: #000000;
+    --card-bg: #111111;
+    --text-color: #E0E0E0;
+    --heading-color: #FFFFFF;
+    --accent-color: #FFFFFF;
+    --accent-hover: #CCCCCC;
+    --secondary-accent: #CCCCCC;
+    --border-color: #333333;
+    --border-color: #333333;
+    --light-gray: #1A1A1A;
+    --header-scrolled-bg: rgba(0, 0, 0, 0.95);
+    --btn-text-color: #000000;
+    --btn-hover-bg: #000000;
+    --btn-secondary-hover-text: #000000;
 }
 
 * {
@@ -72,25 +95,28 @@ h6 {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--accent-color), var(--secondary-accent));
-    color: #fff;
-    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+    background: var(--accent-color);
+    color: var(--btn-text-color);
+    border: 1px solid var(--accent-color);
+    box-shadow: none;
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(108, 92, 231, 0.6);
+    transform: translateY(-2px);
+    background: var(--btn-hover-bg);
+    color: var(--accent-color);
+    box-shadow: none;
 }
 
 .btn-secondary {
     background: transparent;
-    border: 2px solid var(--accent-color);
+    border: 1px solid var(--accent-color);
     color: var(--accent-color);
 }
 
 .btn-secondary:hover {
     background: var(--accent-color);
-    color: #fff;
+    color: var(--btn-secondary-hover-text);
 }
 
 .section-title {
@@ -110,8 +136,8 @@ h6 {
     left: 50%;
     transform: translateX(-50%);
     width: 60px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), var(--secondary-accent));
+    height: 2px;
+    background: var(--accent-color);
     border-radius: 2px;
 }
 
@@ -130,10 +156,11 @@ header {
 }
 
 header.scrolled {
-    background-color: rgba(13, 13, 18, 0.95);
+    background-color: var(--header-scrolled-bg);
     padding: 1rem 0;
     backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: none;
+    border-bottom: 1px solid var(--border-color);
 }
 
 nav {
@@ -178,6 +205,29 @@ nav {
 
 .nav-links li a:hover::after {
     width: 100%;
+}
+
+.theme-toggle {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--heading-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all var(--transition-speed);
+}
+
+.theme-toggle:hover {
+    background-color: var(--light-gray);
+    transform: rotate(15deg);
 }
 
 .menu-toggle {
@@ -227,7 +277,7 @@ nav {
 .hero-description {
     font-size: 1.1rem;
     margin-bottom: 2.5rem;
-    color: #b0b0b0;
+    color: var(--text-color);
 }
 
 .hero-buttons {
@@ -243,7 +293,7 @@ nav {
     width: 50%;
     height: 80%;
     /* Abstract tech background or 3D element placeholder */
-    background: radial-gradient(circle at center, rgba(108, 92, 231, 0.1) 0%, transparent 70%);
+    background: transparent;
     z-index: 0;
     display: flex;
     justify-content: center;
@@ -254,52 +304,42 @@ nav {
    Ideally, we would generate an image here. 
    For now, a CSS geometric shape or simple glow.
 */
-.glowing-circle {
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent-color), var(--secondary-accent));
-    filter: blur(80px);
-    /* Massive glow effect */
-    opacity: 0.4;
-    animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0px) scale(1);
-    }
-
-    50% {
-        transform: translateY(-20px) scale(1.1);
-    }
-
-    100% {
-        transform: translateY(0px) scale(1);
-    }
-}
+/* 
+   Ideally, we would generate an image here. 
+   For now, a CSS geometric shape or simple glow.
+*/
+/* Removed glowing circle for minimalist design */
 
 /* About Section */
 .about-grid {
-    display: flex;
-    flex-direction: column; /* Stacks the image and text vertically */
-    align-items: center;    /* Centers items horizontally */
-    gap: 2rem;              /* Reduced gap for a single column layout */
-    max-width: 800px;       /* Prevents text from becoming too wide */
-    margin: 0 auto;         /* Centers the entire grid container on the page */
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    /* Image Left, Text Right */
+    align-items: center;
+    gap: 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .about-image img {
     width: 100%;
     border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: none;
+    border: 1px solid var(--border-color);
     /* Placeholder style if image is missing */
     min-height: 300px;
-    background-color: var(--card-bg);
+    background-color: var(--light-gray);
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter var(--transition-speed);
+}
+
+.about-image img:hover {
+    filter: grayscale(0%);
 }
 
 .about-text {
-    text-align: center;
+    text-align: left;
 }
 
 .about-text h3 {
@@ -311,8 +351,8 @@ nav {
 
 .about-stats {
     display: flex;
-    justify-content: center;
-    gap: 2rem;
+    justify-content: flex-start;
+    gap: 3rem;
     margin-top: 2rem;
     align-items: center;
 }
@@ -343,12 +383,12 @@ nav {
     border-radius: 15px;
     text-align: center;
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
 }
 
 .skill-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+    box-shadow: none;
     border-color: var(--accent-color);
 }
 
@@ -371,10 +411,12 @@ nav {
 }
 
 .skill-tag {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--light-gray);
+    color: var(--text-color);
     padding: 0.4rem 0.8rem;
     border-radius: 20px;
     font-size: 0.85rem;
+    border: 1px solid var(--border-color);
 }
 
 /* Projects Section */
@@ -390,7 +432,8 @@ nav {
     overflow: hidden;
     transition: transform var(--transition-speed);
     position: relative;
-    group: 'project';
+
+    border: 1px solid var(--border-color);
 }
 
 .project-card:hover {
@@ -399,13 +442,13 @@ nav {
 
 .project-image {
     height: 200px;
-    background-color: #2a2a35;
+    background-color: var(--light-gray);
     /* Placeholder color */
     position: relative;
     overflow: hidden;
 }
 
-/* Use a gradient overlay for placeholder images */
+/* Use a lighter overlay for placeholder images */
 .project-image::before {
     content: '';
     position: absolute;
@@ -413,7 +456,7 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, var(--card-bg), #2a2a35);
+    background: linear-gradient(45deg, var(--card-bg), var(--light-gray));
 }
 
 .project-content {
@@ -454,15 +497,16 @@ nav {
 }
 
 .service-card {
-    background: linear-gradient(145deg, var(--card-bg), #1a1a24);
+    background: var(--card-bg);
     padding: 2.5rem;
     border-radius: 15px;
+    border: 1px solid var(--border-color);
     border-left: 4px solid var(--accent-color);
     transition: all var(--transition-speed);
 }
 
 .service-card:hover {
-    background: linear-gradient(145deg, #1a1a24, var(--card-bg));
+    background: var(--light-gray);
     transform: translateX(5px);
 }
 
@@ -472,7 +516,7 @@ nav {
 }
 
 .service-card p {
-    color: #b0b0b0;
+    color: var(--text-color);
     font-size: 0.95rem;
 }
 
@@ -484,7 +528,8 @@ nav {
     background-color: var(--card-bg);
     padding: 4rem;
     border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    box-shadow: none;
+    border: 1px solid var(--border-color);
 }
 
 .contact-info h3 {
@@ -507,7 +552,7 @@ nav {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: rgba(108, 92, 231, 0.1);
+    background-color: var(--light-gray);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -525,11 +570,12 @@ nav {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--light-gray);
     display: flex;
     justify-content: center;
     align-items: center;
     transition: background-color var(--transition-speed), transform var(--transition-speed);
+    border: 1px solid var(--border-color);
 }
 
 .social-link:hover {
@@ -547,10 +593,10 @@ nav {
 .form-group textarea {
     width: 100%;
     padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--light-gray);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
-    color: #fff;
+    color: var(--text-color);
     font-family: var(--font-primary);
     transition: focus var(--transition-speed);
 }
@@ -564,16 +610,16 @@ nav {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--accent-color);
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: #fff;
 }
 
 /* Footer */
 footer {
     padding: 2rem 0;
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--border-color);
     margin-top: 4rem;
-    color: #888;
+    color: #666;
 }
 
 /* Responsive */
@@ -637,7 +683,7 @@ footer {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(5px);
     justify-content: center;
     align-items: center;
@@ -645,15 +691,15 @@ footer {
 }
 
 .modal-content {
-    background: linear-gradient(145deg, #1a1a24, #16161f);
+    background: var(--card-bg);
     padding: 3rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
     width: 90%;
     max-width: 450px;
     border-radius: 20px;
     text-align: center;
     position: relative;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
     animation: popUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -705,10 +751,10 @@ footer {
 
 .modal h3 {
     margin-bottom: 1rem;
-    color: #fff;
+    color: var(--heading-color);
 }
 
 .modal p {
-    color: #b0b0b0;
+    color: var(--text-color);
     font-size: 1rem;
 }
