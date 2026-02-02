@@ -801,6 +801,30 @@ footer {
     }
 }
 
+@media (max-width: 480px) {
+    .contact-container {
+        padding: 1.5rem;
+    }
+
+    .contact-text p {
+        word-break: break-all;
+        /* Forces long emails to break */
+        font-size: 0.9rem;
+    }
+
+    .contact-item {
+        gap: 0.8rem;
+    }
+
+    .contact-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        flex-shrink: 0;
+        /* Prevents icon from shrinking */
+    }
+}
+
 /* Confirmation Modal */
 .modal {
     display: none;
